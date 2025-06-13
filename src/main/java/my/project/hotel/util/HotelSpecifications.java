@@ -52,7 +52,6 @@ public class HotelSpecifications {
                 return cb.conjunction();
             }
 
-            assert query != null;
             query.distinct(true);
 
             Join<Hotel, Amenity> join = root.join("amenities", JoinType.LEFT);
