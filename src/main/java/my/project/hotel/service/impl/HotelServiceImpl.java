@@ -2,10 +2,8 @@ package my.project.hotel.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import my.project.hotel.database.entity.Hotel;
-import my.project.hotel.database.entity.Amenity;
-import my.project.hotel.database.repository.HotelRepository;
-import my.project.hotel.database.repository.AmenityRepository;
+import my.project.hotel.database.entity.*;
+import my.project.hotel.database.repository.*;
 import my.project.hotel.service.histogram.HistogramStrategyFactory;
 import my.project.hotel.service.HotelService;
 import my.project.hotel.dto.*;
@@ -79,9 +77,12 @@ public class HotelServiceImpl implements HotelService {
     public HotelFullDto createHotel(HotelCreateDto createDto) {
         try {
             log.info("Creating hotel: {}", createDto);
+
             Hotel hotel = hotelCreateMapper.map(createDto);
-            Hotel saved = hotelRepository.save(hotel);
-            return hotelFullMapper.map(saved);
+
+            Hotel savedHotel = hotelRepository.save(hotel);
+
+            return hotelFullMapper.map(savedHotel);
         } catch (Exception e) {
             log.error("Error creating hotel", e);
             throw new HotelCreationException(e.getMessage());

@@ -8,17 +8,20 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "contacts")
 public class Contacts implements BaseEntity<Long> {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String phone;
     private String email;
 
     @OneToOne
-    @MapsId
-    @JoinColumn(name = "hotel_id")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 }
 

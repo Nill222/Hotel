@@ -11,6 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "amenity")
 public class Amenity implements BaseEntity<Long> {
 
     @Id
