@@ -27,30 +27,36 @@
 
 Файл конфигурации: application.yml
 yaml
+```bash
 custom:
   datasource:
     url: jdbc:h2:mem:hotel-db;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
     username: sa
     password: 1234
+```
 Переключиться на другую БД (например, PostgreSQL)
 Измени параметры в блоке custom.datasource:
 
 yaml
+```bash
 custom:
   datasource:
     url: jdbc:postgresql://localhost:5432/hotel_db
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: your_password
+```
 Убедись, что драйвер PostgreSQL доступен (в pom.xml):
 
 xml
+```bash
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <scope>runtime</scope>
 </dependency>
+```
 Перезапусти приложение. Никаких дополнительных изменений не требуется — DataSource будет создан на основе новых параметров.
 
 
