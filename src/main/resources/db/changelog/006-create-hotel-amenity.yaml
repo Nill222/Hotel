@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006
+      author: user
+      changes:
+        - createTable:
+            tableName: hotel_amenity
+            columns:
+              - column:
+                  name: hotel_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amenity_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: hotel_amenity
+            baseColumnNames: hotel_id
+            referencedTableName: hotel
+            referencedColumnNames: id
+            constraintName: fk_hotel_amenity_hotel
+        - addForeignKeyConstraint:
+            baseTableName: hotel_amenity
+            baseColumnNames: amenity_id
+            referencedTableName: amenity
+            referencedColumnNames: id
+            constraintName: fk_hotel_amenity_amenity
+        - addPrimaryKey:
+            tableName: hotel_amenity
+            columnNames: hotel_id, amenity_id
+            constraintName: pk_hotel_amenity
