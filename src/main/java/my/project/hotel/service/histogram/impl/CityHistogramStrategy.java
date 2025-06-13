@@ -1,6 +1,5 @@
 package my.project.hotel.service.histogram.impl;
 
-
 import lombok.RequiredArgsConstructor;
 import my.project.hotel.database.entity.Address;
 import my.project.hotel.database.repository.HotelRepository;
